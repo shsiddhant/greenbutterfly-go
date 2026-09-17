@@ -11,8 +11,9 @@ Go implementation using [Cobra](https://cobra.dev/).
 
 ```shell
 $ greenbutterfly-go -h
-happiness is a green butterfly...
-...and she has flown away
+
+"happiness is a green butterfly...
+...and she has flown away"
 
 A CLI for turning my scattered scripts into commands.
 
@@ -21,9 +22,9 @@ Usage:
   greenbutterfly-go [command]
 
 Available Commands:
-  completion  Generate the autocompletion script for the specified shell
-  days-since  View days since for a list of significant dates. (aliases: ds, days_since)
-  help        Help about any command
+  completion Generate the autocompletion script for the specified shell
+  days-since View days since for a list of significant dates. (aliases: ds, days_since)
+  help      Help about any command
 
 Flags:
   -h, --help      help for greenbutterfly-go
@@ -38,7 +39,8 @@ Use "greenbutterfly-go [command] --help" for more information about a command.
 
 ```
 $ greenbutterfly-go days-since dates.json
-It has been 1005 days since 'The Best Day' - December 17, 2023.
+ DAYS SINCE ─────────────────────────────
+ 1005 • The Best Day • December 17, 2023
 ```
 
 **JSON Schema:**

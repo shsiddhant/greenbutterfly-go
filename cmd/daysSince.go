@@ -7,10 +7,12 @@ import (
 	"fmt"
 	"os"
 	"path/filepath"
+	"unicode/utf8"
 
 	"github.com/spf13/cobra"
 
 	"github.com/shsiddhant/greenbutterfly-go/internal"
+	"github.com/shsiddhant/greenbutterfly-go/ui"
 )
 
 var jsonFilePath string
@@ -19,16 +21,17 @@ var jsonFilePath string
 //
 // Aliases: ds, days_since
 var daysSinceCmd = &cobra.Command{
-	Use:     "days-since [JSON_FILE_PATH]",
+	Use:     "days-since JSON_FILE_PATH",
 	Aliases: []string{"ds", "days_since"},
+	Args:    cobra.ExactArgs(1),
 	Short: "View days since for a list of significant dates." +
 		" (aliases: ds, days_since)",
 	Long: `View days since for a list of significant dates.
-Sorted oldest to newest.
+Sorted oldest to newest.`,
 
-Example output:
-It has been 1005 days since 'The Best Day' - December 17, 2023.`,
-	Args: cobra.ExactArgs(1),
+	Example: `  $ greenbutterfly-go days-since dates.json
+   DAYS SINCE ────────────────────────────
+   1005 • The Best Day • December 17, 2023`,
 	RunE: func(cmd *cobra.Command, args []string) error {
 		jsonFilePath = args[0]
 		absPath, err := filepath.Abs(jsonFilePath)
@@ -42,13 +45,30 @@ It has been 1005 days since 'The Best Day' - December 17, 2023.`,
 		if err != nil {
 			return err
 		}
-		for _, day := range daysSince {
-			fmt.Printf(
-				"It has been %d days since '%s' - %s.\n",
-				day.Days,
-				day.Title,
-				day.Date,
+		for i, day := range daysSince {
+			countText := fmt.Sprint(
+				ui.PastDaysStyle.Render(fmt.Sprintf("%5d", day.Days)),
 			)
+			metaText := fmt.Sprintf(
+				" • %s • %s\n",
+				ui.TitleStyle.Render(day.Title),
+				ui.DimStyle.Render(day.Date),
+			)
+			if i == 0 {
+				formattedString := fmt.Sprintf(
+					"%5d • %s • %s",
+					day.Days,
+					day.Title,
+					day.Date,
+				)
+				fmt.Print(
+					ui.RenderHeader(
+						"Days Since",
+						utf8.RuneCountInString(formattedString),
+					),
+				)
+			}
+			fmt.Print(countText + metaText)
 		}
 		return nil
 	},

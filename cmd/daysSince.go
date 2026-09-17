@@ -47,7 +47,7 @@ Sorted oldest to newest.`,
 		}
 		for i, day := range daysSince {
 			countText := fmt.Sprint(
-				ui.PastDaysStyle.Render(fmt.Sprintf("%5d", day.Days)),
+				ui.DaysCountStyle.Render(fmt.Sprintf("%5d", day.Days)),
 			)
 			metaText := fmt.Sprintf(
 				" • %s • %s\n",

@@ -21,7 +21,7 @@ var (
 	DimStyle   = lipgloss.NewStyle().Foreground(ColorMuted)
 
 	headerTextStyle = lipgloss.NewStyle().Bold(true).Foreground(ColorPrimary)
-	PastDaysStyle   = lipgloss.NewStyle().Bold(false).Foreground(ColorSad)
+	DaysCountStyle  = lipgloss.NewStyle().Bold(false).Foreground(ColorSad)
 	QuoteStyle      = lipgloss.NewStyle().Italic(true).Foreground(ColorLove)
 )
 

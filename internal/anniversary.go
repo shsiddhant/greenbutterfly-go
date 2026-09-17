@@ -19,7 +19,8 @@ func CalculateAnniversaries(jsonFilePath string, nextYear bool) ([]Anniversary, 
 		return nil, err
 	}
 
-	today := time.Now().In(loc)
+	now := time.Now().In(loc)
+	today := time.Date(now.Year(), now.Month(), now.Day(), 0, 0, 0, 0, loc)
 	dayDuration := 24 * time.Hour
 	layout := "January 02, 2006"
 

@@ -22,9 +22,10 @@ Usage:
   greenbutterfly-go [command]
 
 Available Commands:
-  completion Generate the autocompletion script for the specified shell
-  days-since View days since for a list of significant dates. (aliases: ds, days_since)
-  help      Help about any command
+  anniversaries View upcoming anniversaries. (alias: ann)
+  completion  Generate the autocompletion script for the specified shell
+  days-since  View days since for a list of significant dates. (aliases: ds, days_since)
+  help        Help about any command
 
 Flags:
   -h, --help      help for greenbutterfly-go
@@ -35,15 +36,7 @@ Use "greenbutterfly-go [command] --help" for more information about a command.
 
 ## Examples
 
-### 1. Days Since
-
-```
-$ greenbutterfly-go days-since dates.json
- DAYS SINCE ─────────────────────────────
- 1005 • The Best Day • December 17, 2023
-```
-
-**JSON Schema:**
+The commands `days-since` and `anniversaries` expect the JSON schema:
 
 ```json
 [
@@ -54,5 +47,18 @@ $ greenbutterfly-go days-since dates.json
 ]
 ```
 
+### 1. Days Since
 
+```shell
+$ greenbutterfly-go days-since dates.json
+ DAYS SINCE ─────────────────────────────
+ 1005 • The Best Day • December 17, 2023
+```
 
+### 2. Upcoming Anniversaries
+
+```shell
+$ greenbutterfly-go anniversaries /dates.json
+ UPCOMING ANNIVERSARIES ─────────────────────────────
+• The Best Day (3th) — December 17, 2026 • in 91 days
+```

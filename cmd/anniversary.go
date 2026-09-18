@@ -102,7 +102,7 @@ func ordinal(number int) string {
 		suffix = "st"
 	case moduloTen == 2:
 		suffix = "nd"
-	case moduloTen == 2:
+	case moduloTen == 3:
 		suffix = "rd"
 	}
 	return fmt.Sprintf("%d%s", number, suffix)

@@ -60,5 +60,5 @@ $ greenbutterfly-go days-since dates.json
 ```shell
 $ greenbutterfly-go anniversaries /dates.json
  UPCOMING ANNIVERSARIES ─────────────────────────────
-• The Best Day (3th) — December 17, 2026 • in 91 days
+• The Best Day (3rd) — December 17, 2026 • in 89 days
 ```
